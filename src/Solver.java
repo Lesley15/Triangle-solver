@@ -7,7 +7,7 @@ public class Solver {
 		Trig triangle=new Trig();
 		Scanner in=new Scanner(System.in);
 		   System.out.println("Hello, welcome to the Trigonometry calculator");
-	       System.out.println("You must enter a minimum of three measurements. \nOne of the measurements must be a length/side.");
+	       System.out.println("You must enter a minimum of three measurements. \nThere must be a minimum of one side length and one Angle .");
 	  
 	       System.out.println(" Please enter side length a:");
 	       double a= in.nextDouble();
@@ -22,24 +22,43 @@ public class Solver {
 	       System.out.println(" Please enter angle C:");
 	       double C= in.nextDouble();
 	       //year=Integer.parseInt(words[0]);
-	       //double[] values={a,b,c,A,B,C};
+	       double[] values={a,b,c,A,B,C};
 	       //Working on commands blueprint first, before coding
-	       //check when only three sides
-	       if(A==0 & B==0 && C==0){
+           //Three inputs
+	        if(A==0 && B==0 && C==0){
+	    	   A=triangle.cosLawAngle(a, b, c);
+	    	   B=triangle.sinLawngle(a, A, b);
+	    	   C=triangle.sinLawngle(b, B, c);
+	       }
+	       if(a==0 && b==0 &&A==0){
 	    	   
 	       }
-	       //Three pieces of info missing, therefore 3 given
+	       if(a==0 && c==0 && A==0){
+	    	   
+	       }
+	       if(a==0 && b==0 && B==0){
+	    	   
+	       }
 	       if(b==0 && c==0 && A==0){
 	    	   A= threeAngles(B, C);
 	    	   b= triangle.sinLawSide(a, A, B);
 	    	   c= triangle.sinLawSide(b, B, C);
+	       }
+	       if(b==0 && c==0 && B==0){
+	    	   
+	       }
+	       if(a==0 && c==0 && C==0){
+	    	   
+	       }
+	       if(b==0 && c==0 && C==0){
+	    	   
 	       }
 	       if (B==0 && a==0 && c==0){
 	    	   B=threeAngles(A, C);
 	    	   a=triangle.sinLawSide(b, B, A);
 	    	   c=triangle.sinLawSide(a, A, C);
 	       }
-	       //Now check for if four pieces of info are given
+	       //Four inputs
 	       if (B==0 && C==0){
 	    	   B=triangle.sinLawngle(a, A, b);
 	    	   C=triangle.sinLawngle(b, B, c);
@@ -51,6 +70,41 @@ public class Solver {
 	       if(a==0 && b==0){
 	    	   a=triangle.sinLawSide(c, C, A);
 	    	   b=triangle.sinLawSide(a, A, B);
+	       }
+	       if(A==0 && C==0){
+	    	 A=triangle.sinLawngle(b, B, a);
+	    	 C=threeAngles(A, B);
+	       }
+	       if(A==0 && b==0){
+	    	   
+	       }
+	       if(A==0 && a==0){
+	    	   
+	       }
+	       if(a==0 && b==0){
+	    	   
+	       }
+	       if(a==0 && c==0){
+	    	   
+	       }
+	       //Five inputs
+	       if(a==0){
+	    	   a=triangle.cosLawSide(A, B, C);
+	       }
+	       if(b==0){
+	    	   b=triangle.sinLawSide(a, A, B);
+	       }
+	       if(c==0){
+	    	   c=triangle.sinLawSide(a, A, C);
+	       }
+	       if(A==0){
+	    	  A=threeAngles(B, C);
+	       }
+	       if(B==0){
+	    	  B=threeAngles(C, A); 
+	       }
+	       if(C==0){
+	    	  C=threeAngles(A, B);
 	       }
 	      System.out.println("Therefore, a= "+a+" b= "+b+" c= "+c+" A= "+A+" B= "+B+" C= "+C );
 		}
